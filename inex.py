@@ -31,8 +31,22 @@ cols = cols.split('|')
 
 if len(cols) == 1:
     if graph.lower() == 'text':
-        cols = None
-    
+        c_label = cols[0]
+        print('-' * 45)
+        if len(c_label) > 8:
+            print('|' + '{:.8}'.format(c_label) + ' |' + ' ' * 32 + ' |')
+        else:
+            print('|' + '{:^8}'.format(c_label) + ' |' + ' ' * 32 + ' |')
+        print('|' + '-' * 43 + '|')
+        b_series = a_df[cols[0].strip()].value_counts()
+        MAXVAL = 0
+        for col1, col2 in b_series.iteritems():
+            if MAXVAL < col2.item():
+                MAXVAL = col2
+        for col1, col2 in b_series.iteritems():
+            reps = ((col2.item() / MAXVAL) * 32)
+            print('|' + '{:>8}'.format(col1) + ' |' + '#' * int(reps.item()) + ' ' * (32 - int(reps.item())) + ' |')
+        print('-' * 45)
     elif graph.lower() == 'graphical':
         a_df[cols[0]].value_counts().plot(ax=ax, kind='bar')
         plt.xlabel(cols[0])
@@ -53,3 +67,14 @@ else:
         plt.subplots_adjust(bottom=0.25)
         plt.show()
         
+        
+# ---------------------------------------------
+# |clarity  |                                 |
+# |-------------------------------------------|
+# |       D | ######                          |
+# |       E | #################               |
+# |       F | ################################|
+# |       G | #########################       |
+# |       H | #######################         |
+# |       I | ###############                 |
+# ---------------------------------------------

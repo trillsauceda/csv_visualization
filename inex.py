@@ -31,17 +31,25 @@ cols = cols.split('|')
 
 if len(cols) == 1:
     if graph.lower() == 'text':
-        return None
+        cols = None
     
     elif graph.lower() == 'graphical':
         a_df[cols[0]].value_counts().plot(ax=ax, kind='bar')
-        
+        plt.xlabel(cols[0])
+        plt.ylabel('counts')
+        plt.subplots_adjust(bottom=0.25)
+        plt.show()
 else:
     x, y = cols
     if graph.lower() == 'text':
-        return None
+        cols = None
     
     elif graph.lower() == 'graphical':
         t_df = a_df[[x.strip(), y.strip()]].groupby(x.strip()).agg(['sum','count'])
-        t_df[y.strip()]['sum'] / t_df[y.strip()]['count'].plot(ax=ax, kind='bar')
+        m_df = t_df[y.strip()]['sum'] / t_df[y.strip()]['count']
+        m_df.plot(ax=ax, kind='bar')
+        plt.xlabel(x.strip())
+        plt.ylabel(y.strip())
+        plt.subplots_adjust(bottom=0.25)
+        plt.show()
         

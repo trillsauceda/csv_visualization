@@ -4,5 +4,5 @@ To-Do:
 
 Clean Data </br>
 Organize Data </br>
-Visualize Data Textually (You Can Do This) </br>
+Visualize Data Textually (You Can Do This) DONE </br>
 Visualize Data Graphically (I can Do This) </br>

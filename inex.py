@@ -28,8 +28,6 @@ cols = sys.stdin.readline().strip()
 print('INEX: What type of plot should be generated? (text or graphical)')
 graph = sys.stdin.readline().strip()
 
-
-
 cols = cols.split('|')
 
 if len(cols) == 1:

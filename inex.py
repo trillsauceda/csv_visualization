@@ -82,7 +82,7 @@ else:
         for col1, col2 in c_series.iteritems():
             reps = ((col2.item() / MAXVAL) * 32)
             print('|' + '{:>8}'.format(col1) + ' |' + '#' * int(reps.item()) + ' ' * (32 - int(reps.item())) + ' |')
-        print('|' + '-' * 43 + '|')
+        print('-' * 45)
     
     elif graph.lower() == 'graphical':
         t_df = a_df[[x.strip(), y.strip()]].groupby(x.strip()).agg(['sum','count'])

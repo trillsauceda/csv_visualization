@@ -53,7 +53,10 @@ if len(cols) == 1:
                 MAXVAL = col2
         for col1, col2 in b_series.iteritems():
             reps = ((col2.item() / MAXVAL) * 32)
-            print('|' + '{:>8}'.format(col1) + ' |' + '#' * int(reps.item()) + ' ' * (32 - int(reps.item())) + ' |')
+            strs = str(col1)
+            if(len(strs) > 8):
+                strs = strs[:8]
+            print('|' + '{:>8}'.format(strs) + ' |' + '#' * int(reps.item()) + ' ' * (32 - int(reps.item())) + ' |')
         print('-' * 45)
     
     #Graphical: 2 Columns    
@@ -100,7 +103,10 @@ else:
                 MAXVAL = col2
         for col1, col2 in c_series.iteritems():
             reps = ((col2.item() / MAXVAL) * 32)
-            print('|' + '{:>8}'.format(col1) + ' |' + '#' * int(reps.item()) + ' ' * (32 - int(reps.item())) + ' |')
+            strs = str(col1)
+            if(len(strs) > 8):
+                strs = strs[:8]
+            print('|' + '{:>8}'.format(strs) + ' |' + '#' * int(reps.item()) + ' ' * (32 - int(reps.item())) + ' |')
         print('-' * 45)
     
     #Graphical: 2 Columns
